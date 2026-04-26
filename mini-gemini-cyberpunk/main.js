@@ -1,5 +1,4 @@
-// ====================== MAIN.JS - MASTER OMEGA V15.2 ======================
-// Desarrollado por: Ing. Juancito Peña
+
 
 const MODELS_LIST = [
   "gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro", 
