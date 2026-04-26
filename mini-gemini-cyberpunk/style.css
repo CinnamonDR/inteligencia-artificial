@@ -1,0 +1,271 @@
+
+:root {
+    --bg-dark: #050508;
+    --bg-panel: rgba(10, 10, 15, 0.98);
+    --accent-cyan: #00f2ff;
+    --accent-blue: #0062ff;
+    --accent-purple: #bc00ff;
+    --text-main: #e2e8f0;
+    --text-dim: #64748b;
+    --neon-glow: 0 0 15px rgba(0, 242, 255, 0.4);
+    --glass-border: 1px solid rgba(0, 242, 255, 0.2);
+    --header-height: 70px;
+    --footer-height: auto;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    height: 100vh;
+    height: 100dvh; 
+    overflow: hidden;
+    background-image: 
+        linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.cyber-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* --- Sidebar Neural --- */
+.cyber-sidebar {
+    width: 280px;
+    background: var(--bg-panel);
+    backdrop-filter: blur(20px);
+    border-right: var(--glass-border);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2000;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cyber-sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--glass-border);
+}
+
+/* --- Botón Cerrar Sidebar (image_b5d8f1.png) --- */
+.btn-close-sidebar {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-close-sidebar:hover {
+    color: var(--accent-cyan);
+    text-shadow: var(--neon-glow);
+}
+
+/* --- Navegación e Historial (image_b5db96.png) --- */
+.sidebar-nav {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.nav-item {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    color: var(--text-dim);
+    text-align: left;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.nav-item.active, .nav-item:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: inset 0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+.nav-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin: 20px 0;
+}
+
+.nav-label {
+    font-size: 0.7rem;
+    color: var(--accent-purple);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+#chat-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* --- Resto del Layout --- */
+.cyber-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.cyber-header {
+    height: var(--header-height);
+    padding: 0 20px 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: var(--glass-border);
+    z-index: 1000;
+}
+
+.header-left h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    margin: 0;
+    text-shadow: var(--neon-glow);
+}
+
+.chat-viewport {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cyber-footer {
+    padding: 15px 20px;
+    background: rgba(5, 5, 8, 0.9);
+    border-top: var(--glass-border);
+}
+
+.input-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    border-radius: 15px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#user-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+}
+
+.cyber-btn-icon {
+    background: transparent;
+    border: var(--glass-border);
+    color: var(--accent-cyan);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: 0.3s;
+}
+
+#toggle-sidebar {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    z-index: 2100;
+}
+
+.send-btn {
+    background: var(--accent-cyan);
+    color: #000;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .cyber-header { padding: 0 15px 0 70px; }
+}
+
+.welcome-screen { text-align: center; margin-top: 20vh; }
+.cyber-logo-anim {
+    font-size: 4rem;
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--accent-cyan));
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+
+
+
+body, html, .cyber-container {
+    overflow-x: hidden !important;
+    width: 100%;
+}
+
+
+.cyber-main {
+    width: 100%;
+    overflow-x: hidden;
+    flex: 1;
+    min-width: 0; 
+}
+
+
+.chat-viewport {
+    overflow-x: hidden; 
+}
+
+
+.cyber-footer {
+    width: 100%;
+    overflow: hidden;
+}
+
